@@ -6,7 +6,7 @@ const statArray = [
         bordercolor: "darkgreen",
         cell: 8,
         row: 5,
-        map: player.map,
+        map: currentMap,
         options: ["up", "down"]
     },
     {
@@ -16,33 +16,39 @@ const statArray = [
         bordercolor: "magenta",
         cell: 10,
         row: 8,
-        map: player.map,
+        map: currentMap,
         options: ["left", "right"]
-    }
-    // {
-    //   name: "orc",
-    //   hp: 0,
-    //   color: "darkgreen",
-    //   cell: 9,
-    //   row: 22,
-    //   map: 0
-    // },
-    // {
-    //   name: "ooze",
-    //   hp: 10,
-    //   color: "darkblue",
-    //   cell: 3,
-    //   row: 14,
-    //   map: 0
-    // },
-    // {
-    //   name: "ogre",
-    //   hp: 10,
-    //   color: "darkgrey",
-    //   cell: 7,
-    //   row: 7,
-    //   map: 0
-    // },
+    },
+    {
+        name: "orc",
+        hp: 10,
+        color: "darkgreen",
+        bordercolor: "green",
+        cell: player.x + 6,
+        row: player.y + 2,
+        map: currentMap,
+        options: ["left", "right", "up", "down"]
+    },
+    {
+        name: "ooze",
+        hp: 10,
+        color: "darkblue",
+        bordercolor: "blue",
+        cell: player.x + 7,
+        row: player.y + 2,
+        map: currentMap,
+        options: ["left", "right", "up", "down"]
+    },
+    {
+        name: "ogre",
+        hp: 10,
+        color: "darkgrey",
+        bordercolor: "gray",
+        cell: player.x + 5,
+        row: player.y + 2,
+        map: currentMap,
+        options: ["left", "right", "up", "down"]
+    },
     // {
     //   name: "goblin2",
     //   hp: 2,

@@ -10,8 +10,8 @@ class Enemy {
         this.color = stats.color;
         this.x = stats.cell;
         this.y = stats.row;
-        this.map = stats.map;
-        this.origin = [stats.map, stats.row, stats.cell]; // was going to be used for a patrol function;
+        this.map = currentMap;
+        this.origin = [currentMap, stats.row, stats.cell]; // was going to be used for a patrol function;
         this.direction = [];
         this.direction = "";
         this.distance;
@@ -19,10 +19,12 @@ class Enemy {
         this.render();
     }
     choosePath() {
-        const path = this.options[Math.floor(Math.random() * this.options.length)]; //path random but if it read through options in order and returned path      
-        this.direction = path;
-        this.move();
-        this.render();
+        if (this.heart > 0) {
+            const path = this.options[Math.floor(Math.random() * this.options.length)]; //path random but if it read through options in order and returned path      
+            this.direction = path;
+            this.move();
+            this.render();
+        }
     };
     pathIsClear(y, x) {
         const blocked = $(`#cell_${this.map}_${this.y + y}_${this.x + x}`).hasClass('wall')

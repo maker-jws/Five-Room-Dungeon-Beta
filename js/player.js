@@ -181,7 +181,7 @@ const player = {
         this.name = alias;
         this.y = start.attr('y');
         this.x = start.attr('x');
-        this.map = start.attr('x');
+        this.map = currentMap
         start.addClass('player');
         console.log(`${this.name} joined the game`);
         console.log(this);

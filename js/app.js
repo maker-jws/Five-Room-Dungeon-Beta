@@ -32,15 +32,15 @@ const gameClock = {
     }
 }
 
-//enemy behavior functions
-function getMonsters() {
-    const monsterList = [[0, 1], [0, 0, 0, 2], [], [], []]
-    //if checks which populate which monsters to put in temp array 
-}
+
 function createMonsters() {
-    //level0 = [0,1]
-    //if checks which populate which monsters to put in temp array 
-    for (let m = 0; m < statArray.length; m++) {
+    monsters = {
+        0: [0, 2],
+        1: [2, 5],
+        2: [6, 8],
+    }
+    let n = currentMap
+    for (let m = monsters[n][0]; m < monsters[n][1]; m++) {
         const monster = new Enemy(statArray[m], m);
         gameEnemies.push(monster);
         console.log(`${statArray[m].name} created!`)
@@ -48,14 +48,17 @@ function createMonsters() {
 }
 function checkEnemyDistance() {
     for (let i = 0; i < gameEnemies.length; i++) {
-        const distanceX = player.x - gameEnemies[i]['x']; // if return negative number player is left if positive, right
-        const distanceY = player.y - gameEnemies[i]['y']; // if return negative number player is above if positive, below
-        const vector = [distanceY, distanceX];
-        gameEnemies[i]['distance'] = vector;
-        if ((vector[0] > -2 && vector[0] < 2) && (vector[1] === 0)) { //triggering across the map 
-            gameEnemies[i].attack(gameEnemies[i]['direction'])
-        } else if (vector[0] === 0 && (vector[1] > -2 && vector[1] < 2)) {
-            gameEnemies[i].attack(gameEnemies[i]['direction'])
+        if (gameEnemies[i].heart > 0) {
+            // console.log(gameEnemies[i].name)
+            const distanceX = player.x - gameEnemies[i]['x']; // if return negative number player is left if positive, right
+            const distanceY = player.y - gameEnemies[i]['y']; // if return negative number player is above if positive, below
+            const vector = [distanceY, distanceX];
+            gameEnemies[i]['distance'] = vector;
+            if ((vector[0] > -2 && vector[0] < 2) && (vector[1] === 0)) { //triggering across the map 
+                gameEnemies[i].attack(gameEnemies[i]['direction'])
+            } else if (vector[0] === 0 && (vector[1] > -2 && vector[1] < 2)) {
+                gameEnemies[i].attack(gameEnemies[i]['direction'])
+            }
         }
     }
 }
@@ -68,7 +71,6 @@ function enemyBehavior() {
         }
     }
 }
-//combat functions
 function battle(attacker, attacked, mod = "0") {
     console.log(`${attacker} moves to attack ${attacked}`)
     let attackerRolled = attackRoll(6, mod)
@@ -86,7 +88,6 @@ function attackRoll(dice) {
     }
     return total;
 }
-//player updates
 function randomItem() {
     console.log('randomItem is called ')
 }
@@ -97,12 +98,20 @@ function addInventoryItem() {
 }
 function resetMap() {
     //increment current map
-    //empty gameboard 
-    //renderMap(currentMap)
+
+    currentMap++
+    $('#gameboard').empty()
+    parseMap(currentMap);
     //increment playerScore+=500pts 
+    player.map++
+    player.populate(player.name)
+    player.render('player');
+    gameEnemies.length = 0;
+    monstersDefeated = false;
+    createMonsters();
     //populate player at new star 
+
 }
-//ON LOAD
 
 function startGame(timed) {
     timelimit = timed;
@@ -125,6 +134,7 @@ function checkGameStatus() {
     if (monstersDefeated === true && checkTreasure === false) {
         setTimeout(alert(`you have surpassed the challenges of this level of the dungeon`), 1000);
         console.log('next map render started')
+        resetMap();
     } else {
         console.log('not ready')
         setTimeout(alert(`You have not faced all of this level's challenges`), 1000);
