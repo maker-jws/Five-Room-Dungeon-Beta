@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <title>5 Room Dungeon build v1.00</title>
+        <style>
+        </style>
+    </head>
+
+    <body class="container-fluid body-document">
+        <!--Header/Navbar-->
+        <!--Main Interface-->
+        <main class="main">
+            <div class="col container-fluid" id="game-header">
+                <div class="row justify-content-center">
+                    <div class="col" id="heart-container">
+                        <div class="row justify-content-center"><strong>Player Heart</strong></div>
+                        <div class="row justify-content-center"><img class="rounded-circle icon-heart"
+                                src="./assets/img/ui/icons/heart--v2.png" />
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="row justify-content-center">
+                            <div class="col">
+                                <h1>FIVEROOMDUNGEON</h1>
+                                <input type="button" value="start game" onclick="startGame()">
+                                <!-- <input type="button" value="add monsters" onclick="createMonsters()"> -->
+                                <input type="button" value="search room"
+                                    onclick="alert(`${player.name} searches the room`)">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col" id="torch-container">
+                        <div class="row justify-content-center"><strong>Torch</strong></div>
+                        <div class="row justify-content-center"><img class="rounded-circle icon-fire"
+                                src="./assets/img/ui/icons/fire--v2.png" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="row justify-content-center"><strong>Player Name</strong></div>
+                </div>
+            </div>
+            <!--Game Board Container -->
+            <div class="container" id="gameboard-container">
+                <div class="row justify-content-center">
+                    <div class="container" id="gameboard"></div>
+                </div>
+            </div>
+
+            </div>
+            </div>
+            <div class="container-fluid info-col" id="gameinfo-container">
+                <div class="row justify-content-center"><strong><span>CLOCK</span></strong></div>
+                <div class="col">
+                    <div class="row justify-content-center">Inventory Container</div>
+                    <div class="row justify-content-center" id="playerInventory">XXX</div>
+                </div>
+                <div class="col">
+                    <div class="row justify-content-center">Description of Scene</div>
+                    <div class="row justify-content-center">...</div>
+                </div>
+
+                <div class="container">
+                    <div class="row justify-content-center"></div>
+                    <div class="col">
+                        <strong>Room Name</strong>
+                        <div class="row justify-content-center">Description of Room</div>
+                    </div>
+                    <div class="col">
+                        <strong>Inventory Items</strong>
+                        <div id="inventory-container">Item List</div>
+                    </div>
+                    <div class="col"></div>
+                </div>
+            </div>
+
+        </main>
+    </body>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="JS/mapParser.js"></script>
+    <script src="JS/maps.js"></script>
+    <script src="JS/player.js"></script>
+    <script src="JS/agents.js"></script>
+    <script src="JS/enemy.js"></script>
+    <script src="JS/app.js"></script>
+
+</html>
+
+<!--Footer Content-->
+<!-- <section class='container-fluid row vertical-padding'> Vertical Padding</section> -->
+<!-- <footer class="navbar navbar-inverse absolute-bottom">
+            <div class="btn-sm">Login</div>
+            <div class="btn-sm">High Score</div>
+            <div class="btn-sm">About</div>
+    </footer> -->
+<!-- <div class="row">
+            <div id="item-list" class="col">
+                <div class="row">
+                    <div class="cell" style="background-color: green"></div>
+                    <div class="cell" style="background-color: brown"></div>
+                    <div class="cell" style="background-color: gray"></div>
+                    <div class="cell" style="background-color: lightgreen"></div>
+                    <div class="cell" style="background-color: darkblue"></div>
+                    <div class="cell" style="background-color: cyan"></div>
+                </div>
+            </div>
+        </div> -->
+<!--Styling-->

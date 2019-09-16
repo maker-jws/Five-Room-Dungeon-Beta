@@ -1,0 +1,30 @@
+// function battle(attacker, attacked, mod = "0") {
+//     attacker = this;
+//     console.log(attacker)
+//     console.log(`${attacker} moves to attack ${attacked}`)
+//     let attackerRolled = attackRoll(6, mod)
+//     let attackedRolled = attackRoll(6, mod)
+//     console.log(attackerRolled, "<<attacker", attackedRoller, "<<attacked");
+//     if (attackerRolled >= attackedRolled) {
+//         attacked.heart--;
+//     }
+// }
+
+else { $(`#gameMessage`).empty() };
+
+// $('#playerInventory').empty();
+    // console.log(player.inventory)
+    randomItem(4);
+    // else (player.inventory.push("The Dungeon has been sacked"))
+    $(`#playerInventory`).empty()
+    for (let i = 0; i < player.inventory.length; i++) {
+        const dispItem = $(`<button class=playerItem id=${i}></button>`)
+        dispItem.text(player.inventory[i])
+        $('#playerInventory').append(dispItem);
+
+console.log('you find some treasure');
+            $(`#gameMessage`).empty();
+            $(`#gameMessage`).text(`....you found treasure`);
+            addInventoryItem(1);
+            player.torch = player.torch + (Math.floor(Math.random() * 3) - 1); //add torch
+            $('.player').removeClass('treasure');
