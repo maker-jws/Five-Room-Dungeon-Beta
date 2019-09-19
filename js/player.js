@@ -15,6 +15,9 @@ const player = {
     attackTarget: [],
     searching: false,
     searchMatrix: [],
+    color: "",
+    class: "",
+
 
     activate(targetClass) {
         // console.log(targetClass)
@@ -176,9 +179,11 @@ const player = {
         this.torch = this.torch - .1
         console.log(this.torch)
     },
-    populate: function (alias) {
+    populate: function (alias, type, color) {
         const start = $('div.star')
         this.name = alias;
+        this.class = type;
+        this.color = color;
         this.y = start.attr('y');
         this.x = start.attr('x');
         this.map = currentMap

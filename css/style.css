@@ -7,6 +7,30 @@
 [class*="col-"] {
   width: 100%;
 }
+#character-creation-form{
+  display: flex;
+  flex-wrap: wrap;
+}
+.character-creation{
+  background-color: white;
+  padding: 2rem; 
+  margin: 1rem;
+  text-align: center;
+}
+.character-creation>h1{
+  font-size: 18pt
+}
+ .character-creation>input{
+  width: 100%;
+  margin: 1rem 0;
+  height: 3rem;
+  padding: 0 1rem;
+}
+.character-creation>label{
+  width: 100%;
+  margin: 1rem 0;
+  text-align: center;
+} 
 .body-document{
   background: url('../assets/img/ui/page/grid1-lg-light.png')
 }

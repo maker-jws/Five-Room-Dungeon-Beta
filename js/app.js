@@ -31,7 +31,10 @@ const gameClock = {
         } else { }
     }
 }
-
+function gameSetup() {
+    $('#gameinfo-container').hide();
+    $('#gameboard').hide();
+}
 
 function createMonsters() {
     monsters = {
@@ -112,12 +115,25 @@ function resetMap() {
     //populate player at new star 
 
 }
+function pageLoad(e) {
+    e.preventDefault();
+    const playerName = $(e.target["0"]).val();
+    const playerClass = $(e.target["1"]).val();
+    const playerColor = $(e.target["2"]).val();
+    // console.log('the create character was submitted')
+    $('#character-creation-form').hide();
+
+    startGame(5);
+    player.populate(playerName, playerClass, playerColor);
+    $('#gameboard').show();
+    $('#gameinfo-container').show();
+}
 
 function startGame(timed) {
     timelimit = timed;
     // $(`#playerCol`).hide();
     parseMap();
-    player.populate("buddy");
+
     createMonsters();
     // setup();
     const timer = setInterval(function () {
@@ -170,6 +186,7 @@ function promptPlayAgain() {
         alert('please enter Y/N')
     } else { location.reload() }
 }
-$('body').click(function () {
-    console.log(event.target)
-});
+gameSetup();
+// $('body').click(function () {
+//     console.log(event.target)
+// });
