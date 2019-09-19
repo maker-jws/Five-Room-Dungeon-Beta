@@ -27,12 +27,11 @@
                     </div>
                     <div class="col">
                         <div class="row justify-content-center">
-                            <div class="col">
-                                <h1>FIVEROOMDUNGEON</h1>
-                                <input type="button" value="start game" onclick="startGame()">
+                            <div class="col" id="game-title-card">
+                                <!-- <input type="button" value="start game" onclick="startGame()"> -->
                                 <!-- <input type="button" value="add monsters" onclick="createMonsters()"> -->
-                                <input type="button" value="search room"
-                                    onclick="alert(`${player.name} searches the room`)">
+                                <!-- <input type="button" value="search room"
+                                    onclick="alert(`${player.name} searches the room`)"> -->
                             </div>
                         </div>
                     </div>
@@ -44,8 +43,23 @@
                         </div>
                     </div>
                 </div>
-                <div class="row justify-content-center">
-                    <div class="row justify-content-center"><strong>Player Name</strong></div>
+            </div>
+            <div class="container-fluid">
+                <div class="row justify-content-center" id="character-creation-form">
+                    <div class="col-4 card character-creation-form-wrapper">
+
+                        <form class="card-body character-creation" onsubmit="pageLoad(event)">
+                            <h1>FIVE+ROOM+DUNGEON</h1>
+                            <h3 class="text-muted">Character Creation</h3>
+                            <label class="row card-title">Name</label>
+                            <input class="row" type="text" placeholder="" name="name" value="" />
+                            <label class="row card-title">Class</label>
+                            <input class="row" type="text" placeholder="" name="class" value="" />
+                            <label class="row card-title">Style</label>
+                            <input class="row" type="color" placeholder="" name="color" value="" />
+                            <input class="row btn btn-primary button-md" type="submit" value="Create Character" />
+                        </form>
+                    </div>
                 </div>
             </div>
             <!--Game Board Container -->
@@ -81,7 +95,6 @@
                     <div class="col"></div>
                 </div>
             </div>
-
         </main>
     </body>
 
@@ -102,24 +115,3 @@
     <script src="JS/app.js"></script>
 
 </html>
-
-<!--Footer Content-->
-<!-- <section class='container-fluid row vertical-padding'> Vertical Padding</section> -->
-<!-- <footer class="navbar navbar-inverse absolute-bottom">
-            <div class="btn-sm">Login</div>
-            <div class="btn-sm">High Score</div>
-            <div class="btn-sm">About</div>
-    </footer> -->
-<!-- <div class="row">
-            <div id="item-list" class="col">
-                <div class="row">
-                    <div class="cell" style="background-color: green"></div>
-                    <div class="cell" style="background-color: brown"></div>
-                    <div class="cell" style="background-color: gray"></div>
-                    <div class="cell" style="background-color: lightgreen"></div>
-                    <div class="cell" style="background-color: darkblue"></div>
-                    <div class="cell" style="background-color: cyan"></div>
-                </div>
-            </div>
-        </div> -->
-<!--Styling-->
