@@ -187,6 +187,6 @@ function promptPlayAgain() {
     } else { location.reload() }
 }
 gameSetup();
-// $('body').click(function () {
-//     console.log(event.target)
-// });
+$('body').click(function () {
+    console.log(event.target)
+});

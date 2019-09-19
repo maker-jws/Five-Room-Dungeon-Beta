@@ -118,6 +118,10 @@ const player = {
         return setTimeout(this.searchArea(), 150);
     },
     move() {
+        const character = this
+        const playerPosition = `#cell_${character.map}_${character.y}_${character.x}`
+        $(playerPosition).attr("style", ``)
+        $("div").removeClass('player');
         if (this.direction === "up" && this.y > 0) {
             if (this.pathIsClear(-1, 0)) {
                 this.y--
@@ -213,9 +217,11 @@ const player = {
     },
     render(newClass) {
         let character = this;
+        const playerPosition = `#cell_${character.map}_${character.y}_${character.x}`
         setTimeout(function () { // controls player speed by determining its update 
-            $("div").removeClass(newClass);
-            $(`#cell_${character.map}_${character.y}_${character.x}`).addClass(newClass);
+            $(playerPosition).addClass(newClass);
+            $(playerPosition).attr("style", `background-color: ${character.color}`);
+            // $(playerPosition).css("border", `2px dotted ${this.bordercolor}`);
         }, this.speed);
     },
     searchArea() {
