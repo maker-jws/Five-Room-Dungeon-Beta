@@ -37,6 +37,8 @@ function gameSetup() {
     $('#gameinfo-container').hide();
     $('#gameboard').hide();
     $('#game-logo').hide();
+    $('#gameinfo-inventory-container').hide();
+    $('#gameinfo-description-container').hide();
 }
 
 function createMonsters() {
@@ -130,7 +132,19 @@ function pageLoad(e) {
     $('#gameboard').show();
     $('#gameinfo-container').show();
 }
-
+function hideItem(e){
+    const label = e.target.id;
+    let targets=label.split('-')
+    let target = `#gameinfo-${targets[0]}-container`
+    if($(target).hasClass("hidden")){
+        $(target).removeClass("hidden")
+        $(target).show()
+    } else {
+        $(target).addClass("hidden")
+        $(target).hide()
+    }
+    
+}
 function startGame(timed) {
     timelimit = timed;
     parseMap();
@@ -186,6 +200,11 @@ function promptPlayAgain() {
     } else { location.reload() }
 }
 gameSetup();
-$('body').click(function () {
-    console.log(event.target)
-});
+
+// $('body').click(function () {
+//     console.log(event.target)
+// });
+
+
+$('div.gameinfo-trigger').click(function (){hideItem(event)});
+$('div.gameinfo-trigger:first-child').click(function (){hideItem(event)});

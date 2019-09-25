@@ -3,6 +3,19 @@
     box-sizing: border-box;
     overflow: -moz-hidden-unscrollable;
 }
+
+html {
+  overflow: scroll;
+  overflow-x: hidden;
+}
+::-webkit-scrollbar {
+  width: 0px;  /* Remove scrollbar space */
+  background: transparent;  /* Optional: just make scrollbar invisible */
+}
+/* Optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+  background: #FF0000;
+}
 /* cell phone only*/
 [class*="col-"] {
   width: 100%;
@@ -96,9 +109,9 @@
 }
 #game-logo{
   max-height: 150px;
-  height: 10vh;
+  height: 15vh;
   margin: 1rem;
-  background-image: url("../assets/img/ui/page/logo_cubel-scr.png");
+  background-image: url("../assets/img/ui/page/logo_full.png");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -129,9 +142,27 @@
 }
 
 /* Tile Styling*/
+#game-header{
+  background: linear-gradient(180deg, rgba(255,255,255,1) 25%,rgba(255,255,255,.5) 75%, rgba(255,255,255,0) 100%);
+  width: 100%;
+  overflow: hidden;
+}
+#gameinfo-container{
+  background: linear-gradient(180deg, rgba(255,255,255,.25) 0%,rgba(255,255,255,.5) 15%, rgba(255,255,255,1) 100%);
+}
+#gameinfo-wrapper{
+  display: flex;
+  flex-wrap: wrap;
+}
+#game-clock{
+  background: lightgray;
+  width: 100%;
+  overflow: hidden;
+  height: auto;
+}
 
 #gameboard{
-  background-color: rgba(0, 0, 0, 0.78);
+  background-color: rgba(0, 0, 0, 0.95);
 }
 
 .door{
@@ -148,7 +179,6 @@
 }
   .wall{
     background-color: black;
-    /*  */
   }
   .treasure{
     background-color: goldenrod;             
@@ -249,4 +279,18 @@
 }
 .hidden{
   visibility: hidden;
+}
+.gameinfo-label{
+  font-size: 14pt;
+  font-style: bolder;
+}
+#gameinfo-inventory-container{
+  background: white;
+  height: 1rem;
+}
+#game-clock-container{
+  background: rgba(255, 255, 255, 0.75);
+  margin-top: -.2rem;
+  height: 2rem;
+  width: 100%;
 }

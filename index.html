@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
             integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="css/style.css">
+        <link rel="stylesheet" href="./assets/fontawesome-free/css/all.min.css">
         <title>5 Room Dungeon build v1.00</title>
         <style>
         </style>
@@ -15,32 +16,35 @@
 
     <body class="container-fluid body-document">
         <!--Header/Navbar-->
-        <nav class="container-fluid" id="game-header">
+        <nav class="col sticky-top" id="game-header">
+            <div>
                 <div class="row justify-content-center">
-                <div class="row justify-content-center">
-                        <div class="col" id="heart-container">
-                            <div class="row justify-content-center"><strong>Player Heart</strong></div>
-                            <div class="row justify-content-center"><img class="rounded-circle icon-heart"
-                                    src="./assets/img/ui/icons/heart--v2.png" />
+                    <div class="col" id="heart-container">
+                        <div class="row justify-content-center"><strong>Player Heart</strong></div>
+                        <div class="row justify-content-center"><img class="rounded-circle icon-heart"
+                                src="./assets/img/ui/icons/heart--v2.png" />
+                        </div>
+                    </div>
+                    <div class="col" id="game-logo">
+                        <div class="row justify-content-center">
+                            <div class="row justify-content-center" id="game-title-card">
+                                <div ></div>
                             </div>
                         </div>
-                        <div class="col" id="game-logo">
-                            <div class="row justify-content-center">
-                                <div class="row justify-content-center" id="game-title-card">
-                                    <div ></div>
-                                </div>
-                            </div>
+                    </div>
+
+                    <div class="col" id="torch-container">
+                        <div class="row justify-content-center"><strong>Torch</strong></div>
+                        <div class="row justify-content-center"><img class="rounded-circle icon-fire"
+                                src="./assets/img/ui/icons/fire--v2.png" />
                         </div>
-    
-                        <div class="col" id="torch-container">
-                            <div class="row justify-content-center"><strong>Torch</strong></div>
-                            <div class="row justify-content-center"><img class="rounded-circle icon-fire"
-                                    src="./assets/img/ui/icons/fire--v2.png" />
-                            </div>
-                        </div>
+                    </div>
                 </div>
-                
-                </div>
+            </div>    
+            <div class="container-fluid">
+                    <!-- <div class="row justify-content-center" id="game-clock-container"><strong><span>CLOCK</span></strong></div> -->
+            </div>
+           
             </nav>
         <!--Main Interface-->
         <main class="main">
@@ -55,7 +59,7 @@
                             <label class="row card-title">Class</label>
                             <input class="row" type="text" placeholder="" name="class" value="" />
                             <label class="row card-title">Style</label>
-                            <input class="row" type="color" placeholder="" name="color" value="" />
+                            <input class="row" type="color" placeholder="" name="color" />
                             <input class="row btn btn-primary button-md" type="submit" value="Create Character" />
                         </form>
                     </div>
@@ -70,27 +74,31 @@
 
             </div>
             </div>
-            <div class="container-fluid info-col" id="gameinfo-container">
-                <div class="col">
-                    <div class="row justify-content-center">Inventory Container</div>
-                    <div class="row justify-content-center" id="playerInventory">XXX</div>
-                </div>
-                <div class="col">
-                    <div class="row justify-content-center">Description of Scene</div>
-                    <div class="row justify-content-center">...</div>
-                </div>
-                <div class="container">
-                    <div class="row justify-content-center"></div>
-                    <div class="col">
-                        <strong>Room Name</strong>
-                        <div class="row justify-content-center">Description of Room</div>
+            <div class="container-fluid info-col fixed-bottom" id="gameinfo-container">
+                    <div class="row justify-content-center" id="gameinfo-wrapper" style="width:100%;text-align:center"}>
+                            <div class='col-6'>
+                                    <div class="row justify-content-center" class="gameinfo-label">Player Inventory</div>
+                                    <div class="row justify-content-center gameinfo-trigger" id="inventory-reveal"><i id="inventory-reveal" class="fas fa-arrow-alt-circle-down"></i></div>
+                                    <div class="row justify-content-center" id="gameinfo-inventory-container">
+                                        <button>Item 1</button>
+                                        <button>Item 2</button>
+                                        <button>Item 3</button>
+                                        <button>Item 4</button>
+                                        <button>Item 5</button>
+                                        <button>Item 6</button>
+                                        <button>Item 7</button>
+                                        <button>Item 8</button>
+                                        <button>Item 9</button>
+                                    </div>
+                              </div> 
+                              <div class='col-6'>
+                                    <div class="row justify-content-center" class="gameinfo-label">Description of Scene</div>
+                                    <div class="row justify-content-center gameinfo-trigger" id="description-reveal"><i id="description-reveal" class="fas fa-arrow-alt-circle-down"></i></div>
+                                    <div class="row justify-content-center" id="gameinfo-description-container">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                    </div>
+                              </div>
                     </div>
-                    <div class="col">
-                        <strong>Inventory Items</strong>
-                        <div id="inventory-container">Item List</div>
-                    </div>
-                    <div class="col"></div>
-                </div>
             </div>
         </main>
     </body>
