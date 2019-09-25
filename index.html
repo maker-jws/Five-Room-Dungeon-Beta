@@ -15,39 +15,38 @@
 
     <body class="container-fluid body-document">
         <!--Header/Navbar-->
-        <!--Main Interface-->
-        <main class="main">
-            <div class="col container-fluid" id="game-header">
+        <nav class="container-fluid" id="game-header">
                 <div class="row justify-content-center">
-                    <div class="col" id="heart-container">
-                        <div class="row justify-content-center"><strong>Player Heart</strong></div>
-                        <div class="row justify-content-center"><img class="rounded-circle icon-heart"
-                                src="./assets/img/ui/icons/heart--v2.png" />
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="row justify-content-center">
-                            <div class="col" id="game-title-card">
-                                <!-- <input type="button" value="start game" onclick="startGame()"> -->
-                                <!-- <input type="button" value="add monsters" onclick="createMonsters()"> -->
-                                <!-- <input type="button" value="search room"
-                                    onclick="alert(`${player.name} searches the room`)"> -->
+                <div class="row justify-content-center">
+                        <div class="col" id="heart-container">
+                            <div class="row justify-content-center"><strong>Player Heart</strong></div>
+                            <div class="row justify-content-center"><img class="rounded-circle icon-heart"
+                                    src="./assets/img/ui/icons/heart--v2.png" />
                             </div>
                         </div>
-                    </div>
-
-                    <div class="col" id="torch-container">
-                        <div class="row justify-content-center"><strong>Torch</strong></div>
-                        <div class="row justify-content-center"><img class="rounded-circle icon-fire"
-                                src="./assets/img/ui/icons/fire--v2.png" />
+                        <div class="col" id="game-logo">
+                            <div class="row justify-content-center">
+                                <div class="row justify-content-center" id="game-title-card">
+                                    <div ></div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+    
+                        <div class="col" id="torch-container">
+                            <div class="row justify-content-center"><strong>Torch</strong></div>
+                            <div class="row justify-content-center"><img class="rounded-circle icon-fire"
+                                    src="./assets/img/ui/icons/fire--v2.png" />
+                            </div>
+                        </div>
                 </div>
-            </div>
+                
+                </div>
+            </nav>
+        <!--Main Interface-->
+        <main class="main">
             <div class="container-fluid">
                 <div class="row justify-content-center" id="character-creation-form">
-                    <div class="col-4 card character-creation-form-wrapper">
-
+                    <div class="col card character-creation-form-wrapper">
                         <form class="card-body character-creation" onsubmit="pageLoad(event)">
                             <h1>FIVE+ROOM+DUNGEON</h1>
                             <h3 class="text-muted">Character Creation</h3>
@@ -72,7 +71,6 @@
             </div>
             </div>
             <div class="container-fluid info-col" id="gameinfo-container">
-                <div class="row justify-content-center"><strong><span>CLOCK</span></strong></div>
                 <div class="col">
                     <div class="row justify-content-center">Inventory Container</div>
                     <div class="row justify-content-center" id="playerInventory">XXX</div>
@@ -81,7 +79,6 @@
                     <div class="row justify-content-center">Description of Scene</div>
                     <div class="row justify-content-center">...</div>
                 </div>
-
                 <div class="container">
                     <div class="row justify-content-center"></div>
                     <div class="col">
@@ -107,9 +104,11 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+
     <script src="JS/mapParser.js"></script>
     <script src="JS/maps.js"></script>
     <script src="JS/player.js"></script>
+    <script src="js/inventory.js"></script>
     <script src="JS/agents.js"></script>
     <script src="JS/enemy.js"></script>
     <script src="JS/app.js"></script>

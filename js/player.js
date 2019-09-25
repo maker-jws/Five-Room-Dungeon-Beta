@@ -18,7 +18,6 @@ const player = {
     color: "",
     class: "",
 
-
     activate(targetClass) {
         // console.log(targetClass)
         if ($('.player').hasClass(targetClass)) {
@@ -118,10 +117,10 @@ const player = {
         return setTimeout(this.searchArea(), 150);
     },
     move() {
-        const character = this
-        const playerPosition = `#cell_${character.map}_${character.y}_${character.x}`
-        $(playerPosition).attr("style", ``)
-        $("div").removeClass('player');
+        // const playerPosition = `#cell_${character.map}_${character.y}_${character.x}`
+
+        // $(playerPosition).attr("style", ``)
+
         if (this.direction === "up" && this.y > 0) {
             if (this.pathIsClear(-1, 0)) {
                 this.y--
@@ -216,12 +215,13 @@ const player = {
 
     },
     render(newClass) {
-        let character = this;
+        const character = this
         const playerPosition = `#cell_${character.map}_${character.y}_${character.x}`
         setTimeout(function () { // controls player speed by determining its update 
+            $("div").removeClass('player');
+            //remove styling at playerPosition
             $(playerPosition).addClass(newClass);
-            $(playerPosition).attr("style", `background-color: ${character.color}`);
-            // $(playerPosition).css("border", `2px dotted ${this.bordercolor}`);
+            //add styling attribute - JQUERY //has to be at same speed as interact.
         }, this.speed);
     },
     searchArea() {

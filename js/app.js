@@ -32,8 +32,11 @@ const gameClock = {
     }
 }
 function gameSetup() {
+    
+    $('#game-header').addClass("hidden");
     $('#gameinfo-container').hide();
     $('#gameboard').hide();
+    $('#game-logo').hide();
 }
 
 function createMonsters() {
@@ -41,6 +44,8 @@ function createMonsters() {
         0: [0, 2],
         1: [2, 5],
         2: [6, 8],
+        3: [8, 10],
+        4: [10, 14],
     }
     let n = currentMap
     for (let m = monsters[n][0]; m < monsters[n][1]; m++) {
@@ -93,6 +98,7 @@ function attackRoll(dice) {
 }
 function randomItem() {
     console.log('randomItem is called ')
+
 }
 function addInventoryItem() {
     randomItem();
@@ -100,20 +106,15 @@ function addInventoryItem() {
 
 }
 function resetMap() {
-    //increment current map
-
     currentMap++
     $('#gameboard').empty()
     parseMap(currentMap);
-    //increment playerScore+=500pts 
     player.map++
     player.populate(player.name)
     player.render('player');
     gameEnemies.length = 0;
     monstersDefeated = false;
     createMonsters();
-    //populate player at new star 
-
 }
 function pageLoad(e) {
     e.preventDefault();
@@ -122,20 +123,18 @@ function pageLoad(e) {
     const playerColor = $(e.target["2"]).val();
     // console.log('the create character was submitted')
     $('#character-creation-form').hide();
-
     startGame(5);
     player.populate(playerName, playerClass, playerColor);
+    $('#game-header').removeClass("hidden");
+    $('#game-logo').show();
     $('#gameboard').show();
     $('#gameinfo-container').show();
 }
 
 function startGame(timed) {
     timelimit = timed;
-    // $(`#playerCol`).hide();
     parseMap();
-
     createMonsters();
-    // setup();
     const timer = setInterval(function () {
         gameClock.changeClock();
         if (!monstersDefeated) {
