@@ -1,296 +1,328 @@
 * {
-    /* border: 1px solid rgba(0, 0, 0, 0.2); */
-    box-sizing: border-box;
-    overflow: -moz-hidden-unscrollable;
+  /* border: 1px solid rgba(0, 0, 0, 0.2); */
+  box-sizing: border-box;
+  overflow: -moz-hidden-unscrollable;
 }
 
 html {
   overflow: scroll;
   overflow-x: hidden;
+  min-width: 300px;
 }
 ::-webkit-scrollbar {
-  width: 0px;  /* Remove scrollbar space */
-  background: transparent;  /* Optional: just make scrollbar invisible */
+  width: 0px; /* Remove scrollbar space */
+  background: transparent; /* Optional: just make scrollbar invisible */
 }
 /* Optional: show position indicator in red */
 ::-webkit-scrollbar-thumb {
-  background: #FF0000;
+  background: #ff0000;
 }
 /* cell phone only*/
 [class*="col-"] {
   width: 100%;
 }
-.body-document{
-  background: url('../assets/img/ui/page/grid1-lg-light.png')
+.body-document {
+  background: url("../assets/img/ui/page/grid1-lg-light.png");
 }
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
   .cell {
     border: solid 1px rgba(0, 0, 0, 0.5);
-    width: 20px;
-    height: 20px;
-}
-#gameboard{
-    text-align: center; 
-}
-#gameboard-container{
-  /* min-width: 66vw; */
-  min-width: 100%;
-  text-align: center; 
-}
-.glyph {
+    width: 11px;
+    height: 11px;
+  }
+  #gameboard {
+    text-align: center;
+  }
+  #gameboard-container {
+    /* min-width: 66vw; */
+    min-width: 100%;
+    text-align: center;
+  }
+  .glyph {
     visibility: hidden;
     height: 0px;
     width: 0px;
+  }
+  .icon-fire,
+  .icon-heart {
+    height: 5vh;
+    width: auto;
+  }
 }
-.icon-fire,.icon-heart{
-  height: 5vh;
-  width: auto;
-}
-} 
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
   .cell {
     border: solid 1px rgba(0, 0, 0, 0.8);
-    width: 30px;
-    height: 30px;
-}
-#gameboard-container{
+    width: 12px;
+    height: 12px;
+  }
+  #gameboard-container {
     /* min-width: 66vw; */
     min-width: 100%;
-    text-align: center; 
-}
-.glyph {
+    text-align: center;
+  }
+  .glyph {
     visibility: hidden;
     height: 0px;
     width: 0px;
-}
-#right-col,
-#left-col {
+  }
+  #right-col,
+  #left-col {
     height: auto;
     margin: 0;
     padding-top: 0;
+  }
+  .icon-fire,
+  .icon-heart {
+    height: 5vh;
+    width: auto;
+  }
 }
-.icon-fire,.icon-heart{
-  height: 5vh;
-  width: auto;
-}
-} 
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
-    .cell {
-      border: solid 1px rgba(0, 0, 0, 0.5);
-      width: 40px;
-      height: 40px;
+  .cell {
+    border: solid 1px rgba(0, 0, 0, 0.5);
+    width: 15px;
+    height: 15px;
   }
-  .icon-fire,.icon-heart{
+  .icon-fire,
+  .icon-heart {
     height: 7vh;
     width: auto;
   }
   #right-col,
   #left-col {
     height: 100px;
+  }
 }
-} 
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
-
-#gameboard-container{
+  #gameboard-container {
     /* min-width: 66vw; */
     width: 100%;
     min-width: 740px;
-}
-#gameboard{
+  }
+  #gameboard {
     width: 992px;
-    height: 100%
-}
-#game-logo{
-  max-height: 150px;
-  height: 15vh;
-  margin: 1rem;
-  background-image: url("../assets/img/ui/page/logo_full.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-.cell{
+    height: 100%;
+  }
+  #game-logo {
+    max-height: 150px;
+    height: 15vh;
+    margin: 1rem;
+    background-image: url("../assets/img/ui/page/logo_full.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  .cell {
     border: solid 1px black;
-    width: 50px;
-    height: 50px;
+    width: 20px;
+    height: 20px;
     margin: 0;
+  }
+  .icon-fire,
+  .icon-heart {
+    height: 96px;
+    width: auto;
+  }
 }
-.icon-fire,.icon-heart{
-  height: 96px;
-  width: auto;
-}
-} 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
-  #gameboard{
+  #gameboard {
     width: 1200px;
-    height: 100%
-}
-.cell{
-  border: solid 1px black;
-  width: 60px;
-  height: 60px;
-  margin: 0;
-}
+    height: 100%;
+  }
+  .cell {
+    border: solid 1px black;
+    width: 23px;
+    height: 23px;
+    margin: 0;
+  }
 }
 
 /* Tile Styling*/
-#game-header{
-  background: linear-gradient(180deg, rgba(255,255,255,1) 25%,rgba(255,255,255,.5) 75%, rgba(255,255,255,0) 100%);
+#game-header {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 1) 25%,
+    rgba(255, 255, 255, 0.5) 75%,
+    rgba(255, 255, 255, 0) 100%
+  );
   width: 100%;
   overflow: hidden;
 }
-#gameinfo-container{
-  background: linear-gradient(180deg, rgba(255,255,255,.25) 0%,rgba(255,255,255,.5) 15%, rgba(255,255,255,1) 100%);
+#gameinfo-container {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.25) 0%,
+    rgba(255, 255, 255, 0.5) 15%,
+    rgba(255, 255, 255, 1) 100%
+  );
 }
-#gameinfo-wrapper{
+#gameinfo-wrapper {
   display: flex;
   flex-wrap: wrap;
 }
-#game-clock{
+#game-clock {
   background: lightgray;
   width: 100%;
   overflow: hidden;
   height: auto;
 }
 
-#gameboard{
+#gameboard {
   background-color: rgba(0, 0, 0, 0.95);
 }
 
-.door{
-    background-color: lightblue;
-  }
-.locked{
-    background-color: lightblue;
+.door {
+  background-color: lightblue;
 }
-.found-trap{
+.locked {
+  background-color: lightblue;
+}
+.found-trap {
   border: 3px solid rgba(255, 0, 0, 0.75);
 }
-.star{
+.star {
   background-color: rgb(7, 190, 251);
 }
-  .wall{
-    background-color: black;
-  }
-  .treasure{
-    background-color: goldenrod;             
-  }
-  .floor{
-    background-color: rgba(211, 211, 211, 0.25);
-  }
-  .tunnel{
-    background-color:darkgray;
-    border-radius: 50%;
-  }
-  .goal{
-    background-color:coral;
-  }
-  .key{
-    background-color: blueviolet;
-  }
-  .lava{
-    background-color: orangered;
-  }
-  .acid{
-    background-color: greenyellow;
-  }
-  .bridge{
-    background-color:rgb(106, 116, 87);
-  }
-  .water{
-    background-color:cornflowerblue;
-  }
-  .void{
-    background-color:rgba(0, 0, 0, 0.75);
-  }
-  .logo-splash, .info-col, #gameboard{
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.33)
-  }
-  .enemy{
-    border-radius: 50%
-  }
-  .enemyAttacked{
-    border-radius: 50%;
-    height: 10px;
-    width: 10px;
-    background-color: brown;
-  }
-  .player{
-    background-color: lightsalmon;
-    border: 1px solid darkgoldenrod;
-    border-radius: 50%;
-    text-align: center;
-  }
-  .playerAttacked{
-    background-color: hotpink;
-    opacity: .6;
-  }
-  .playerAttack{
-    background-color: hotpink;
-    opacity: .6;
-    margin: 0 auto;
-    transform: rotateX(30deg);
-    width: 10px;
-    height: 20px;
-    transform: scaleY(1.5);
-    text-align: center;
-  }
-  #info-col{
-    padding: 1rem;
-    height: auto;
+.wall {
+  background-color: black;
+}
+.treasure {
+  background-color: goldenrod;
+}
+.floor {
+  background-color: rgba(211, 211, 211, 0.25);
+}
+.tunnel {
+  background-color: darkgray;
+  border-radius: 50%;
+}
+.goal {
+  background-color: coral;
+}
+.key {
+  background-color: blueviolet;
+}
+.lava {
+  background-color: orangered;
+}
+.acid {
+  background-color: greenyellow;
+}
+.bridge {
+  background-color: rgb(106, 116, 87);
+}
+.water {
+  background-color: cornflowerblue;
+}
+.void {
+  background-color: rgba(128, 3, 160, 0.22);
+}
+.logo-splash,
+.info-col,
+#gameboard {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.33);
+}
+.enemy {
+  border-radius: 50%;
+}
+.enemyAttacked {
+  border-radius: 50%;
+  height: 10px;
+  width: 10px;
+  background-color: brown;
+}
+.player {
+  background-color: lightsalmon;
+  border: 1px solid darkgoldenrod;
+  border-radius: 50%;
+  text-align: center;
+}
+.playerAttacked {
+  background-color: hotpink;
+  opacity: 0.6;
+}
+.playerAttack {
+  background-color: hotpink;
+  opacity: 0.6;
+  margin: 0 auto;
+  transform: rotateX(30deg);
+  width: 10px;
+  height: 20px;
+  transform: scaleY(1.5);
+  text-align: center;
+}
+#info-col {
+  padding: 1rem;
+  height: auto;
 }
 
-#character-creation-form{
+#character-creation-form {
   display: flex;
   flex-wrap: wrap;
 }
 
-.character-creation{
+.character-creation {
   background-color: white;
-  padding: 2rem; 
+  padding: 2rem;
   margin: 1rem;
   text-align: center;
 }
-.character-creation>h1{
-  font-size: 18pt
+.character-creation > h1 {
+  font-size: 18pt;
 }
- .character-creation>input{
+.character-creation > input {
   width: 100%;
   margin: 1rem 0;
   height: 3rem;
   padding: 0 1rem;
 }
-.character-creation>label{
+.character-creation > label {
   width: 100%;
   margin: 1rem 0;
   text-align: center;
-} 
-.character-creation-form-wrapper{
+}
+.character-creation-form-wrapper {
   min-width: 300px;
   max-width: 400px;
 }
-.hidden{
+.hidden {
   visibility: hidden;
 }
-.gameinfo-label{
+.gameinfo-label {
   font-size: 14pt;
   font-style: bolder;
 }
-#gameinfo-inventory-container{
-  background: white;
+#gameinfo-inventory-container {
+  min-height: 150px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  /* background: rgba(255, 255, 255, 0.61); */
   height: 1rem;
+  width: 350px;
+  padding: 1rem 0;
+  margin: 0;
 }
-#game-clock-container{
+#gameinfo-inventory-container > button {
+  height: 24pt;
+  width: auto;
+  margin: 0rem 0.3rem;
+  border: 0;
+  border-radius: 0.1rem;
+  background-color: black;
+  color: whitesmoke;
+}
+#game-clock-container {
   background: rgba(255, 255, 255, 0.75);
-  margin-top: -.2rem;
+  margin-top: -0.2rem;
   height: 2rem;
   width: 100%;
 }
