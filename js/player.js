@@ -17,6 +17,8 @@ const player = {
   searchMatrix: [],
   color: "",
   class: "",
+  screenX: 0,
+  screenY: 0,
 
   activate(targetClass) {
     // console.log(targetClass)
@@ -140,11 +142,20 @@ const player = {
     }
     return setTimeout(this.searchArea(), 150);
   },
+  findScreenPosition() {
+    const character = this;
+    const playerPosition = `#cell_${character.map}_${character.y}_${character.x}`;
+    const screenObj = $(playerPosition)[0];
+    const screenX =
+      screenObj.offsetLeft + Math.floor(screenObj.offsetWidth / 2);
+    const screenY =
+      screenObj.offsetTop + Math.floor(screenObj.offsetHeight / 2);
+    console.log(this.screenX, this.screenY);
+    return (this.screenX = screenX), (this.screenY = screenY);
+  },
   move() {
-    // const playerPosition = `#cell_${character.map}_${character.y}_${character.x}`
-
     // $(playerPosition).attr("style", ``)
-
+    this.findScreenPosition();
     if (this.direction === "up" && this.y > 0) {
       if (this.pathIsClear(-1, 0)) {
         this.y--;
@@ -167,6 +178,7 @@ const player = {
     this.interact();
     this.render("player");
   },
+
   pickLock() {
     let target = 13;
     if (attackRoll(6) >= target) {
