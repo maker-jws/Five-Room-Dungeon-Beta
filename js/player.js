@@ -85,6 +85,7 @@ const player = {
   checkTunnel: function() {
     const playerInTunnel = $(".tunnel").hasClass("player");
     if (playerInTunnel) {
+      tunnelLocations.reverse();
       //function called every 1/10th second - if player in tunnel
       for (let i = 0; i < tunnelLocations.length; i++)
         if (
@@ -146,10 +147,8 @@ const player = {
     const character = this;
     const playerPosition = `#cell_${character.map}_${character.y}_${character.x}`;
     const screenObj = $(playerPosition)[0];
-    const screenX =
-      screenObj.offsetLeft + Math.floor(screenObj.offsetWidth / 2);
-    const screenY =
-      screenObj.offsetTop + Math.floor(screenObj.offsetHeight / 2);
+    const screenX = screenObj.offsetLeft + screenObj.offsetWidth / 2;
+    const screenY = screenObj.offsetTop + screenObj.offsetHeight / 2;
     console.log(this.screenX, this.screenY);
     return (this.screenX = screenX), (this.screenY = screenY);
   },
