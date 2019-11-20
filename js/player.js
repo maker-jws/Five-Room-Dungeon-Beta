@@ -21,7 +21,6 @@ const player = {
   screenY: 0,
 
   activate(targetClass) {
-    // console.log(targetClass)
     if ($(".player").hasClass(targetClass)) {
       return true;
     }
@@ -51,15 +50,16 @@ const player = {
       this.attackTarget = [0, character.y, character.x + 1];
     } else {
     }
+    console.log(this.attackTarget)
     this.checkHit();
 
-    setTimeout(function() {
-      console.log(`${character.name} finishes his attack`);
+    setTimeout(function () {
+      // console.log(`${character.name} finishes his attack`);
       $("div").removeClass("playerAttacked");
       $(".playerAttack").remove();
     }, this.speed * 10);
   },
-  checkHealth: function() {
+  checkHealth: function () {
     if (this.health <= 0) {
       endGame();
     } else if ($("div.void").hasClass("player")) {
@@ -82,7 +82,7 @@ const player = {
       });
     }
   },
-  checkTunnel: function() {
+  checkTunnel: function () {
     const playerInTunnel = $(".tunnel").hasClass("player");
     if (playerInTunnel) {
       tunnelLocations.reverse();
@@ -147,6 +147,7 @@ const player = {
     const character = this;
     const playerPosition = `#cell_${character.map}_${character.y}_${character.x}`;
     const screenObj = $(playerPosition)[0];
+    console.log()
     const screenX = screenObj.offsetLeft + screenObj.offsetWidth / 2;
     const screenY = screenObj.offsetTop + screenObj.offsetHeight / 2;
     console.log(this.screenX, this.screenY);
@@ -225,7 +226,7 @@ const player = {
     this.torch = this.torch - 0.1;
     console.log(this.torch);
   },
-  populate: function(alias, type, color) {
+  populate: function (alias, type, color) {
     const start = $("div.star");
     this.name = alias;
     this.class = type;
@@ -268,7 +269,7 @@ const player = {
   render(newClass) {
     const character = this;
     const playerPosition = `#cell_${character.map}_${character.y}_${character.x}`;
-    setTimeout(function() {
+    setTimeout(function () {
       // controls player speed by determining its update
       $("div").removeClass("player");
       //remove styling at playerPosition
@@ -305,7 +306,7 @@ const player = {
   }
 };
 
-$("body").keypress(function(e) {
+$("body").keypress(function (e) {
   //controls player movement & listens for interact keys: [f q]
   const keyed = event.which;
   // console.log(event.which)
@@ -328,7 +329,7 @@ $("body").keypress(function(e) {
   }
 });
 
-$("body").keydown(function(e) {
+$("body").keydown(function (e) {
   //controls player attack
   const keyed = event.which;
   // console.log(event.which)

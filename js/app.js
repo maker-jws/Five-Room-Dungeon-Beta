@@ -14,7 +14,7 @@ const gameClock = {
   second: 00,
   ms: 100,
 
-  changeClock: function() {
+  changeClock: function () {
     this.ms--;
     //    $(`#ms`).text(`${gameClock.ms} `)
     $(`#second`).text(`   ${gameClock.second} `);
@@ -78,21 +78,21 @@ function checkEnemyDistance() {
 function enemyBehavior() {
   if (counter % monsterInterval === 0) {
     for (let i = 0; i < gameEnemies.length; i++) {
-      setTimeout(function() {
+      setTimeout(function () {
         setTimeout(gameEnemies[i].choosePath(), monsterInterval);
       }, 10);
     }
   }
 }
-function battle(attacker, attacked, mod = "0") {
-  console.log(`${attacker} moves to attack ${attacked}`);
-  let attackerRolled = attackRoll(6, mod);
-  let attackedRolled = attackRoll(6, mod);
-  console.log(attackerRolled, "<<attacker", attackedRoller, "<<attacked");
-  if (attackerRolled >= attackedRolled) {
-    attacked.heart--;
-  }
-}
+// function battle(attacker, attacked, mod = "0") {
+//   console.log(`${attacker} moves to attack ${attacked}`);
+//   let attackerRolled = attackRoll(6, mod);
+//   let attackedRolled = attackRoll(6, mod);
+//   console.log(attackerRolled, "<<attacker", attackedRoller, "<<attacked");
+//   if (attackerRolled >= attackedRolled) {
+//     attacked.heart--;
+//   }
+// }
 function attackRoll(dice) {
   let total = 0;
   for (let i = 0; i < 3; i++) {
@@ -106,7 +106,7 @@ function randomItem() {
 }
 function addInventoryItem() {
   randomItem();
-  console.log("addInventory Item is called  item addded");
+  console.log("addInventory Item is called item addded");
 }
 function resetMap() {
   currentMap++;
@@ -149,7 +149,7 @@ function startGame(timed) {
   timelimit = timed;
   parseMap();
   createMonsters();
-  const timer = setInterval(function() {
+  const timer = setInterval(function () {
     gameClock.changeClock();
     if (!monstersDefeated) {
       enemyBehavior();
@@ -189,21 +189,23 @@ function drawFogOfWar() {
   const canvas = document.getElementById("gameboard_fog");
   const ctx = canvas.getContext("2d");
   ctx.clearRect(0, 0, cWidth, cHeight);
+  ctx.globalAlpha = 1; //clears screen
   const light = canvas.getContext("2d");
+  // console.log(light)
   canvas.width = parseInt(cWidth);
   canvas.height = parseInt(cHeight);
   $("#gameboard_fog").css("top", cY);
   $("#gameboard_fog").css("left", cX);
   $("#gameboard_fog").css("position", "absolute");
+  $("#gameboard_fog").css("z-index", 10);
   //   console.log(canvas);
-  ctx.fillStyle = "rgba(0,0,0,.95)";
+  ctx.fillStyle = "rgb";
   ctx.fillRect(0, 0, cWidth, cHeight);
-  light.fillStyle = "rgba(0,0,0,0)";
-  const x = Math.floor(player.screenX) - 175;
-  const y = Math.floor(player.screenY) - 135;
-  light.clearRect(x, y, 120, 120);
-
-  //   console.log(cX, cY, cHeight, cWidth);
+  light.fillStyle = "rgba(255,0,0,1)";
+  const x = Math.floor(player.screenX - cX);
+  const y = Math.floor(player.screenY - cY);
+  // console.log(x, y)
+  light.clearRect(x - 60, y - 60, 120, 120);
 }
 function endGame() {
   const playerFell = $("div.void").hasClass("player");
@@ -219,12 +221,17 @@ function endGame() {
       alert("time has run out");
       !timeOut;
     } else if (playerFell) {
-      alert(`${player.name} has fallen to their death`);
+      (`${player.name} has fallen to their death`);
+      promptPlayAgain();
     } else if (player.hp <= 0) {
       alert("Your player has succumb to their injuries");
-    } else if (player.torch <= 0)
+      promptPlayAgain();
+    } else if (player.torch <= 0) {
       alert("When the lights go out the monsters surround you");
-    promptPlayAgain();
+      promptPlayAgain();
+    }
+
+
   }
 }
 
@@ -243,13 +250,14 @@ function promptPlayAgain() {
 }
 gameSetup();
 
-$("body").click(function() {
-  console.log(event.target);
+$("body").click(function () {
+  const t = event.target
+  console.log(t, t.offsetLeft, t.offsetWidth, t.offsetTop, t.offsetHeight);
 });
 
-$("div.gameinfo-trigger").click(function() {
+$("div.gameinfo-trigger").click(function () {
   hideItem(event);
 });
-$("div.gameinfo-trigger:first-child").click(function() {
+$("div.gameinfo-trigger:first-child").click(function () {
   hideItem(event);
 });
