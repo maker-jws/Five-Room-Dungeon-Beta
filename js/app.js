@@ -2,6 +2,7 @@ let timer;
 let timelimit;
 let counter = 0;
 let timeOut = false;
+let gameStart = false;
 let monstersDefeated = false;
 let monsterInterval = 200;
 const gameEnemies = [];
@@ -9,6 +10,8 @@ let cHeight = null;
 let cWidth = null;
 let cY = null;
 let cX = null;
+
+
 const gameClock = {
   minute: timelimit,
   second: 00,
@@ -119,19 +122,69 @@ function resetMap() {
   monstersDefeated = false;
   createMonsters();
 }
+
 function pageLoad(e) {
   e.preventDefault();
   const playerName = $(e.target["0"]).val();
   const playerClass = $(e.target["1"]).val();
   const playerColor = $(e.target["2"]).val();
-  // console.log('the create character was submitted')
+  console.log('the create character was submitted')
   $("#character-creation-form").hide();
+
   startGame(5);
+  gameStart = true;
   player.populate(playerName, playerClass, playerColor);
   $("#game-header").removeClass("hidden");
   $("#game-logo").show();
   $("#gameboard").show();
   $("#gameinfo-container").show();
+  $("body").keypress(function (e) {
+    //controls player movement & listens for interact keys: [f q]
+    const keyed = event.which;
+    // console.log(event.which)
+    if (keyed === 119) {
+      player.direction = "up";
+      player.move();
+    } else if (keyed === 115) {
+      player.direction = "down";
+      player.move();
+    } else if (keyed === 97) {
+      player.direction = "left";
+      player.move();
+    } else if (keyed === 100) {
+      player.direction = "right";
+      player.move();
+    } else if (keyed === 102) {
+      player.matrixArray(3);
+    } else if (keyed === 101) {
+      player.playerInteract();
+    }
+  });
+
+  $("body").keydown(function (e) {
+    //controls player attack
+    const keyed = event.which;
+    // console.log(event.which)
+    if (keyed === 38) {
+      player.attack("up");
+    } else if (keyed === 40) {
+      player.attack("down");
+    } else if (keyed === 37) {
+      player.attack("left");
+    } else if (keyed === 39) {
+      player.attack("right");
+    } else {
+    }
+  });
+
+  $("div.gameinfo-trigger").click(function () {
+    hideItem(event);
+  });
+  $("div.gameinfo-trigger:first-child").click(function () {
+    hideItem(event);
+  });
+  // }
+
 }
 function hideItem(e) {
   const label = e.target.id;
@@ -168,10 +221,10 @@ function checkGameStatus() {
       alert(`you have surpassed the challenges of this level of the dungeon`),
       1000
     );
-    console.log("next map render started");
+    // console.log("next map render started");
     resetMap();
   } else {
-    console.log("not ready");
+    console.log("not ready to complete the dungeon");
     setTimeout(
       alert(`You have not faced all of this level's challenges`),
       1000
@@ -215,12 +268,12 @@ function endGame() {
     timeOut === true ||
     playerFell === true
   ) {
-    // console.log('game over');
+    console.log('game over');
     if (timeOut === true) {
       clearInterval(timer);
       alert("time has run out");
       !timeOut;
-    } else if (playerFell) {
+    } else if (playerFell === true) {
       (`${player.name} has fallen to their death`);
       promptPlayAgain();
     } else if (player.hp <= 0) {
@@ -236,7 +289,8 @@ function endGame() {
 }
 
 function promptPlayAgain() {
-  var replay = prompt("Would you like to play again (Y/N)", "N");
+
+  const replay = prompt("Would you like to play again (Y/N)", "N");
 
   if (replay === "Y") {
     location.reload();
@@ -250,14 +304,8 @@ function promptPlayAgain() {
 }
 gameSetup();
 
-$("body").click(function () {
-  const t = event.target
-  console.log(t, t.offsetLeft, t.offsetWidth, t.offsetTop, t.offsetHeight);
-});
-
-$("div.gameinfo-trigger").click(function () {
-  hideItem(event);
-});
-$("div.gameinfo-trigger:first-child").click(function () {
-  hideItem(event);
-});
+//troubleshooting dom navigation tool.
+  // $("body").click(function () {
+  //   const t = event.target
+  //   console.log(t, t.offsetLeft, t.offsetWidth, t.offsetTop, t.offsetHeight);
+  // });

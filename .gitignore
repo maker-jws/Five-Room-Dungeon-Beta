@@ -1,2 +1,4 @@
 *.txt
 taskList.txt
+/assets/bootstrap-3.3.7-dist
+/assets/fontawesome-free

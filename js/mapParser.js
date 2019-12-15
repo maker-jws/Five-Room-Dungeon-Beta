@@ -12,10 +12,8 @@ function parseMap(map) {
   for (let r = 0; r < mapPack[currentMap].length; r++) {
     const row = $('<div class=" row justify-content-center mx-auto"/>');
     for (let c = 0; c < mapPack[m][r].length; c++) {
-      // let D = `${mapPack[m][r][c]}`
       const cell = $("<div class=cell></div>");
-      cell.attr("id", `cell_${m}_${r}_${c}`); //--may not need to identify specific cells with id when you have x/y);
-      cell.attr("map", m);
+      cell.attr("id", `cell_${m}_${r}_${c}`);
       cell.attr("y", r);
       cell.attr("x", c);
       if (mapPack[m][r][c] === 1) {

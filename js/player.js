@@ -50,11 +50,11 @@ const player = {
       this.attackTarget = [0, character.y, character.x + 1];
     } else {
     }
-    console.log(this.attackTarget)
+    // console.log(this.attackTarget)
     this.checkHit();
 
     setTimeout(function () {
-      // console.log(`${character.name} finishes his attack`);
+      console.log(`${character.name} finishes his attack`);
       $("div").removeClass("playerAttacked");
       $(".playerAttack").remove();
     }, this.speed * 10);
@@ -147,10 +147,9 @@ const player = {
     const character = this;
     const playerPosition = `#cell_${character.map}_${character.y}_${character.x}`;
     const screenObj = $(playerPosition)[0];
-    console.log()
     const screenX = screenObj.offsetLeft + screenObj.offsetWidth / 2;
     const screenY = screenObj.offsetTop + screenObj.offsetHeight / 2;
-    console.log(this.screenX, this.screenY);
+    // console.log(this.screenX, this.screenY);
     return (this.screenX = screenX), (this.screenY = screenY);
   },
   move() {
@@ -205,26 +204,28 @@ const player = {
       [1, 0],
       [1, 1]
     ];
-    for (let i = 0; i < nearby.length; i++) {
-      const y = parseInt(player.y) + nearby[i][0];
-      const x = parseInt(player.x) + nearby[i][1];
-      const cell = `#cell_0_${y}_${x}`;
-      if ($(cell).hasClass("locked")) {
-        const results = this.pickLock();
-        console.log(results);
-        if (results === true) {
-          $(cell).removeClass("locked");
-        } else {
-          ("lock pick failed");
+    if (gameStart) {
+      for (let i = 0; i < nearby.length; i++) {
+        const y = parseInt(player.y) + nearby[i][0];
+        const x = parseInt(player.x) + nearby[i][1];
+        const cell = `#cell_0_${y}_${x}`;
+        if ($(cell).hasClass("locked")) {
+          const results = this.pickLock();
+          // console.log(results);
+          if (results === true) {
+            $(cell).removeClass("locked");
+          } else {
+            ("lock pick failed");
+          }
+        } else if ($(cell).hasClass("goal")) {
+          checkGameStatus();
+          console.log('initiate level transfer function')
         }
-      } else if ($(cell).hasClass("goal")) {
-        checkGameStatus();
-        // console.log('initiate level transfer function')
+        //test migrate interact functions to playerInteract - so they are under their control...
       }
-      //test migrate interact functions to playerInteract - so they are under their control...
+      this.torch = this.torch - 0.1;
+      // console.log(this.torch);
     }
-    this.torch = this.torch - 0.1;
-    console.log(this.torch);
   },
   populate: function (alias, type, color) {
     const start = $("div.star");
@@ -236,7 +237,7 @@ const player = {
     this.map = currentMap;
     start.addClass("player");
     console.log(`${this.name} joined the game`);
-    console.log(this);
+    // console.log(this);
     this.render("player");
   },
   pathIsClear(y, x) {
@@ -269,17 +270,22 @@ const player = {
   render(newClass) {
     const character = this;
     const playerPosition = `#cell_${character.map}_${character.y}_${character.x}`;
+
     setTimeout(function () {
       // controls player speed by determining its update
+      $('.player').attr(`style`, ``)
       $("div").removeClass("player");
+
       //remove styling at playerPosition
       $(playerPosition).addClass(newClass);
+      // console.log(character.color)
+      $(playerPosition).attr(`style`, `background-color: ${character.color}`)
       //add styling attribute - JQUERY //has to be at same speed as interact.
     }, this.speed);
   },
   searchArea() {
     this.torch = this.torch - 0.5;
-    console.log(this.torch);
+    // console.log(this.torch);
     for (m = 0; m < this.searchMatrix.length; m++) {
       const targ = this.searchMatrix[m];
       const y = parseInt(player.y) + targ[0];
@@ -289,7 +295,7 @@ const player = {
       if ($(cell).hasClass("locked")) {
         console.log("the door near by is locked");
         if (this.key === true) {
-          console.log("key", this.key, cell, "cell");
+          // console.log("key", this.key, cell, "cell");
           $(cell).removeClass("locked");
           this.key = false;
         }
@@ -306,41 +312,3 @@ const player = {
   }
 };
 
-$("body").keypress(function (e) {
-  //controls player movement & listens for interact keys: [f q]
-  const keyed = event.which;
-  // console.log(event.which)
-  if (keyed === 119) {
-    player.direction = "up";
-    player.move();
-  } else if (keyed === 115) {
-    player.direction = "down";
-    player.move();
-  } else if (keyed === 97) {
-    player.direction = "left";
-    player.move();
-  } else if (keyed === 100) {
-    player.direction = "right";
-    player.move();
-  } else if (keyed === 102) {
-    player.matrixArray(3);
-  } else if (keyed === 101) {
-    player.playerInteract();
-  }
-});
-
-$("body").keydown(function (e) {
-  //controls player attack
-  const keyed = event.which;
-  // console.log(event.which)
-  if (keyed === 38) {
-    player.attack("up");
-  } else if (keyed === 40) {
-    player.attack("down");
-  } else if (keyed === 37) {
-    player.attack("left");
-  } else if (keyed === 39) {
-    player.attack("right");
-  } else {
-  }
-});
